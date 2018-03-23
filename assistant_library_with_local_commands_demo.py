@@ -33,7 +33,7 @@ import aiy.audio
 import aiy.voicehat
 from google.assistant.library.event import EventType
 
-
+vlcinstance = vlc.get_instance()
 
 logging.basicConfig(
     level=logging.INFO,
@@ -58,6 +58,7 @@ def say_ip():
 
 def greet_me():
     aiy.audio.say('You are my daddy, you big sexy, handsomelooking thing!')
+
 
 
 def process_event(assistant, event):
@@ -86,10 +87,13 @@ def process_event(assistant, event):
         elif text == 'bang':
             assistant.stop_conversation()
             greet_me()
-        elif text == 'play youtube':
+        elif text == 'play adressa podcast':
             assistant.stop_conversation()
-            p = vlc.MediaPlayer("http://feeds.soundcloud.com/stream/385952423-adresseavisen-sexliv-metoo-ny-regjering-kulturpolitikk-og-campus.mp3")
-            p.play()
+            vlcinstance.MediaPlayer("http://feeds.soundcloud.com/stream/385952423-adresseavisen-sexliv-metoo-ny-regjering-kulturpolitikk-og-campus.mp3")
+            vlcinstance.audio_set_volume(20)
+            vlcinstance.play()
+        elif text == 'stop podcast':
+            assistant.stop_conversation()
 
     elif event.type == EventType.ON_END_OF_UTTERANCE:
         status_ui.status('thinking')
