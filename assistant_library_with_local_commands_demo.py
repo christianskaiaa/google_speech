@@ -57,7 +57,7 @@ def say_ip():
 def greet_me():
     aiy.audio.say('You are my daddy, you big sexy, handsomelooking thing!')
 
-p = 0
+#p = 0
 
 def process_event(assistant, event):
     status_ui = aiy.voicehat.get_status_ui()
@@ -89,12 +89,12 @@ def process_event(assistant, event):
             assistant.stop_conversation()
             global p
             p = vlc.MediaPlayer("http://feeds.soundcloud.com/stream/385952423-adresseavisen-sexliv-metoo-ny-regjering-kulturpolitikk-og-campus.mp3")
-            p.audio_set_volume(30)
+            p.audio_set_volume(40)
             p.play()
         elif text == 'stop podcast':
             assistant.stop_conversation()
-            global p
             p.stop()
+            print('thinking')
 
     elif event.type == EventType.ON_END_OF_UTTERANCE:
         status_ui.status('thinking')
