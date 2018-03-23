@@ -87,7 +87,7 @@ def process_event(assistant, event):
         elif text == 'bang':
             assistant.stop_conversation()
             greet_me()
-        elif text == 'play adressa podcast':
+        elif text == 'play podcast':
             assistant.stop_conversation()
             vlcinstance.MediaPlayer("http://feeds.soundcloud.com/stream/385952423-adresseavisen-sexliv-metoo-ny-regjering-kulturpolitikk-og-campus.mp3")
             vlcinstance.audio_set_volume(20)
