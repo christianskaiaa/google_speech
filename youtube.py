@@ -48,11 +48,16 @@ def youtube_search(options):
   print "Channels:\n", "\n".join(channels), "\n"
   print "Playlists:\n", "\n".join(playlists), "\n"
 
-#url = "https://www.youtube.com/watch?v=_gp51lt9kdA"
-#video = pafy.new(url)
-#audiostreams = video.audiostreams
+#  print "Videos:\n", "\n".join(videos), "\n"
+#  print "Channels:\n", "\n".join(channels), "\n"
+#  print "Playlists:\n", "\n".join(playlists), "\n"
 
-#player = vlc.MediaPlayer(audiostreams[0])
+url = "https://www.youtube.com/watch?v=_gp51lt9kdA"
+video = pafy.new(url)
+audiostreams = video.audiostreams
+
+Instance = vlc.Instance()
+player = vlc.MediaPlayer(audiostreams[0])
 
 if __name__ == "__main__":
   argparser.add_argument("--q", help="Search term", default="Google")
