@@ -31,6 +31,8 @@ from aiy.assistant.library import Assistant
 import aiy.audio
 import aiy.voicehat
 from google.assistant.library.event import EventType
+import vlc
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -83,6 +85,10 @@ def process_event(assistant, event):
         elif text == 'bang':
             assistant.stop_conversation()
             greet_me()
+        elif text == 'play youtube':
+            assistant.stop_conversation()
+            p = vlc.MediaPlayer("http://feeds.soundcloud.com/stream/385952423-adresseavisen-sexliv-metoo-ny-regjering-kulturpolitikk-og-campus.mp3")
+            p.play()
 
     elif event.type == EventType.ON_END_OF_UTTERANCE:
         status_ui.status('thinking')
