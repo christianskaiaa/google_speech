@@ -73,6 +73,8 @@ def process_event(assistant, event):
     elif event.type == EventType.ON_RECOGNIZING_SPEECH_FINISHED and event.args:
         print('You said:', event.args['text'])
         text = event.args['text'].lower()
+        p.pause()
+
         if text == 'power off':
             assistant.stop_conversation()
             power_off_pi()
@@ -101,8 +103,12 @@ def process_event(assistant, event):
             global p
             p = vlc.MediaPlayer("http://lyd.nrk.no/nrk_radio_p13_mp3_h")
             p.audio_set_volume(40)
-            p.play() 
+            p.play()
             print('play radio')
+        elif text == 'resume player':
+            assistant.stop_conversation()
+            p.play()
+            print('resume player')
 
     elif event.type == EventType.ON_END_OF_UTTERANCE:
         status_ui.status('thinking')
