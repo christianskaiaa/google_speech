@@ -25,13 +25,14 @@ import logging
 import platform
 import subprocess
 import sys
+import vlc
 
 import aiy.assistant.auth_helpers
 from aiy.assistant.library import Assistant
 import aiy.audio
 import aiy.voicehat
 from google.assistant.library.event import EventType
-import vlc
+
 
 
 logging.basicConfig(
